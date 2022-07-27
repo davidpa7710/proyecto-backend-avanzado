@@ -15,7 +15,7 @@ export default async (req, res, next) => {
         await userSchema.validateAsync(req.body)
         next()
     } catch (error) {
-       return res.status(401).json({ 
+       return res.status(500).json({ 
          msg: 'error al un crear user'
        }) 
     }
