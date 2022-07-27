@@ -14,3 +14,5 @@ const itemSchema = new mongoose.Schema({
        ref: 'Specs'
     }
 })
+
+export default mongoose.model('Items', itemSchema)

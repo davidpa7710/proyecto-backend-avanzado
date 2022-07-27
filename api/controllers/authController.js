@@ -1,4 +1,4 @@
-import { User } from './index.js'
+import { User } from '../models/index.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jwt-simple'
 import config from '../config/index.js'
@@ -35,14 +35,14 @@ const login = async (req, res) => {
             })
         }
         user.password = undefined
-const payload = {
-    userId: user.id,
-    }
-    const token = jwt.encode(payload, config.token.secret);
-    return res.json({
-        msg: 'Login correcto',
-        token
-    });
+        const payload = {
+            userId: user.id,
+        }
+        const token = jwt.encode(payload, config.token.secret);
+        return res.json({
+            msg: 'Login correcto',
+            token
+        });
     } catch (error) {
         return res.status(500).json({
             msg: 'Error al hacer login'
@@ -50,4 +50,4 @@ const payload = {
     }
 }
 
-export default { login, register}
+export default { login, register }

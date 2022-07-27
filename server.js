@@ -1,10 +1,23 @@
-import express from 'express'
 import http from 'http'
 
-const api = express()
+import api from './api/api.js'
+import database from './api/config/database.js'
+import config from './api/config/index.js'
 
-const PORT = 5050
+const { server: serverCnf } = config
 
 const server = http.createServer(api)
 
-server.listen(PORT)
+const onError = (err) => {
+    console.error('Ha ocurrido un error en el server', err);
+};
+
+const onListening = () => {
+    console.info('Servidor ejectutándose en el puerto', serverCnf.port);
+};
+
+server.on('listening', onListening);
+server.on('error', onError);
+
+server.listen(serverCnf.port);
+database();
