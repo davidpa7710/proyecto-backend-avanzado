@@ -1,5 +1,6 @@
 import express from 'express'
-import { authRoutes } from './routes/index.js';
+import protectedRoute from './middleware/protectedMiddleware.js';
+import { authRoutes, itemRoutes } from './routes/index.js';
 
 const api = express()
 
@@ -12,6 +13,10 @@ api.get('/', (_, res) => {
         msg: 'API funcionando'
     })
 })
+
+api.use(protectedRoute)
+
+api.use('/items', itemRoutes)
 
 
 export default api
