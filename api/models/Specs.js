@@ -10,7 +10,6 @@ const specsSchema = new mongoose.Schema({
     },
     images: [{
         type: String,
-        required: true,
     }]
 })
 
