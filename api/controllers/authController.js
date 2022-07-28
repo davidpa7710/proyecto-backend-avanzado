@@ -10,19 +10,20 @@ const register = async (req, res) => {
         const newUser = await User.create(req.body)
         newUser.password = undefined
         return res.json({
-            msg: 'Nuevo Admin Creado',
+            msg: 'Nuevo usuario Creado',
             admin: newUser
         })
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
-            msg: 'Error al registrar admin'
+            msg: 'Error al registrar usuario'
         })
     }
 }
 const login = async (req, res) => {
     const { password, email } = req.body;
     try {
-        const user = await UserModel.findOne(email,)
+        const user = await User.findOne({email})
         if (!user) {
             return res.status(401).json({
                 msg: 'Credenciales Erroneas'
@@ -44,6 +45,7 @@ const login = async (req, res) => {
             token
         });
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             msg: 'Error al hacer login'
         })
