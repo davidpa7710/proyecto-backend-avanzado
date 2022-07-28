@@ -30,5 +30,5 @@ export default () => {
         databaseUri = config.database.uri;
         databaseName = config.database.name
     }
-    mongoose.connect(`${databaseUri}/ ${databaseName}`)
+    mongoose.connect(`${databaseUri}/${databaseName}`)
 }
