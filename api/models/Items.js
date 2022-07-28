@@ -1,5 +1,17 @@
 import mongoose from "mongoose";
 
+const specsSchema = new mongoose.Schema({
+    color: String,
+    dimension: String,
+    provider: {
+        type: String,
+        required: true,
+    },
+    images: [{
+        type: String,
+    }]
+})
+
 const itemSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -9,10 +21,7 @@ const itemSchema = new mongoose.Schema({
     price: Number,
     category: String,
     description: String,
-    specs: {
-       type: mongoose.Schema.Types.ObjectId,
-       ref: 'Specs'
-    }
+    specs: { specsSchema }
 })
 
 export default mongoose.model('Items', itemSchema)
