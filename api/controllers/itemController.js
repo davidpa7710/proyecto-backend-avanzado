@@ -17,7 +17,7 @@ const create = async (req, res) => {
 
 const getAll = async (req, res) => {
     try {
-      const items = await Item.find();
+      const items = await Items.find();
       return res.json({
         msg: 'Items obtenidos',
         items,
