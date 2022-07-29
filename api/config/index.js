@@ -14,7 +14,7 @@ export default {
     uri: process.env.DB_URI_TEST || 'mongodb://localhost',
     name: process.env.DB_NAME_TEST || 'test',
   },
-  // token: {
-  //   secret: process.env.JWT_SECRET,
-  // },
+  token: {
+    secret: process.env.JWT_SECRET,
+  },
 };
