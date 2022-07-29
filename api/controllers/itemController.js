@@ -15,4 +15,16 @@ const create = async (req, res) => {
     }
 }
 
-export default { create }
+const getAll = async (req, res) => {
+    try {
+      const items = await Item.find();
+      return res.json({
+        msg: 'Items obtenidos',
+        items,
+      });
+    } catch (error) {
+      return returnError('Error al obtener items', res);
+    }
+  };
+
+export default { create, getAll }
